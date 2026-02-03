@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html style="background:black;">
 <head>
+    <meta charset="utf-8">
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: black; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        #timecode { color: white; font-family: -apple-system, sans-serif; font-weight: 700; font-size: 20vw; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        body { margin: 0; color: white; background: black; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
+        #t { font-size: 20vw; font-weight: bold; font-variant-numeric: tabular-nums; }
     </style>
 </head>
 <body>
-    <div id="timecode">00:00:00:00</div>
+    <div id="t">00:00:00:00</div>
     <script>
-        function update() {
+        function u() {
             const n = new Date();
             const h = String(n.getHours()).padStart(2, '0');
             const m = String(n.getMinutes()).padStart(2, '0');
             const s = String(n.getSeconds()).padStart(2, '0');
             const f = String(Math.floor(n.getMilliseconds() / 40)).padStart(2, '0');
-            document.getElementById('timecode').textContent = h + ':' + m + ':' + s + ':' + f;
-            requestAnimationFrame(update);
+            document.getElementById('t').innerText = h + ':' + m + ':' + s + ':' + f;
+            requestAnimationFrame(u);
         }
-        update();
+        u();
     </script>
 </body>
 </html>
